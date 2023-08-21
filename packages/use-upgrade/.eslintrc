@@ -1,7 +1,12 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "ignore": "./.eslintignore",
+  "ignorePatterns": [
+    "scripts/**",
+    "dist/**",
+    "es/**",
+    "lib/**"
+  ],
   "plugins": [
     "@typescript-eslint",
     "prettier"

@@ -1,7 +1,11 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "ignore": "./.eslintignore",
+  "ignorePatterns": [
+    "scripts/**",
+    "es/**",
+    "lib/**"
+  ],
   "plugins": [
     "@typescript-eslint",
     "prettier"
@@ -12,8 +16,6 @@
     "plugin:prettier/recommended"
   ],
   "rules": {
-    "@typescript-eslint/no-explicit-any": "off",
-    "no-empty": "off",
-    "no-var": "off"
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }
