@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "publish": "lerna publish from-package -y --no-private"
+    "publish": "lerna publish from-package -y"
   },
   "workspaces": [
     "./packages/*"
