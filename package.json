@@ -2,11 +2,10 @@
   "name": "use-upgrade",
   "private": true,
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
-    "build": "lerna run build"
+    "preinstall": "npx only-allow pnpm"
   },
   "workspaces": [
-    "packages"
+    "./packages/*"
   ],
   "repository": {
     "type": "git",
