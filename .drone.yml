@@ -5,19 +5,14 @@ workspace:
   path: /home/node/app
 
 steps:
-  - name: install-and-build
+  - name: build-and-publish
     image: node:16
     volumes:
       - name: npmcache
         path: /usr/local/share/.cache/yarn
     commands:
-      - yarn config set registry https://registry.npmmirror.com
       - yarn global add pnpm
       - pnpm i
-
-  - name: publish
-    image: node:16
-    commands:
       - pnpm run publish
     environment:
       NPM_TOKEN:
