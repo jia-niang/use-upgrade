@@ -5,7 +5,7 @@ workspace:
   path: /home/node/app
 
 steps:
-  - name: build-and-publish
+  - name: install-and-build
     image: node:16
     volumes:
       - name: npmcache
@@ -15,6 +15,11 @@ steps:
       - yarn global add pnpm
       - pnpm i
       - lerna publish from-package -y
+
+  - name: publish
+    image: node:16
+    commands:
+      - yarn publish
     environment:
       NPM_TOKEN:
         from_secret: NPM_TOKEN
