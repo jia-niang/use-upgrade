@@ -14,7 +14,6 @@ steps:
       - yarn config set registry https://registry.npmmirror.com
       - yarn global add pnpm
       - pnpm i
-      - lerna publish from-package -y
 
   - name: publish
     image: node:16
