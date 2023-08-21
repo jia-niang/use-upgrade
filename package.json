@@ -2,7 +2,8 @@
   "name": "use-upgrade",
   "private": true,
   "scripts": {
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "publish": "lerna publish from-package -y --no-private"
   },
   "workspaces": [
     "./packages/*"
