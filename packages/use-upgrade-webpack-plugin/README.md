@@ -2,6 +2,12 @@
 
 配合 `use-upgrade` 使用，令开发者可以手动跳过某次版本更新。
 
+# 安装
+
+```bash
+yarn add use-upgrade-webpack-plugin -D
+```
+
 # 用法
 
 配置 webpack，添加此插件：
@@ -9,6 +15,11 @@
 ```js
 const UseUpgradeWebpackPlugin = require('use-upgrade-webpack-plugin')
 
+// 简单的用法，直接开启
+new UseUpgradeWebpackPlugin()
+
+// 或
+// 支持提供配置项
 new UseUpgradeWebpackPlugin({
   // 是否默认跳过所有更新提示
   defaultSkip: false,
