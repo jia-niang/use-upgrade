@@ -1,6 +1,6 @@
 {
   "name": "use-upgrade",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A lib can auto detect new versions of your SPA website.",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -8,7 +8,8 @@
   "unpkg": "dist/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "build": "node ./scripts/build.js"
+    "build": "node ./scripts/build.js",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "react hooks",
