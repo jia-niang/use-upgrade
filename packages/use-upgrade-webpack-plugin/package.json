@@ -1,0 +1,24 @@
+{
+  "name": "use-upgrade-webpack-plugin",
+  "version": "0.1.0",
+  "description": "A tool to help you detect new versions of your websites.",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "build": "node ./scripts/build.js"
+  },
+  "keywords": [
+    "use-upgrade",
+    "upgrade",
+    "webpack",
+    "webpack plugin"
+  ],
+  "author": "jia-niang <1@paperplane.cc>",
+  "license": "MIT",
+  "files": [
+    "es/**",
+    "lib/**"
+  ]
+}

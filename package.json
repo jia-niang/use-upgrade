@@ -1,0 +1,32 @@
+{
+  "name": "use-upgrade",
+  "private": true,
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "build": "lerna run build"
+  },
+  "workspaces": [
+    "packages"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jia-niang/use-upgrade"
+  },
+  "bugs": {
+    "url": "https://github.com/jia-niang/use-upgrade/issues"
+  },
+  "author": "jia-niang <1@paperplane.cc>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.5.1",
+    "@types/react": "^18.2.20",
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "@typescript-eslint/parser": "^6.4.0",
+    "eslint": "^8.47.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "lerna": "^7.1.5",
+    "prettier": "^3.0.2",
+    "typescript": "^5.1.6"
+  }
+}
