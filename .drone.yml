@@ -18,7 +18,7 @@ steps:
   - name: publish
     image: node:16
     commands:
-      - yarn publish
+      - pnpm run publish
     environment:
       NPM_TOKEN:
         from_secret: NPM_TOKEN
