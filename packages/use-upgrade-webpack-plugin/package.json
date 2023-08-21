@@ -7,8 +7,7 @@
   "jsnext:main": "es/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "build": "node ./scripts/build.js",
-    "prepublishOnly": "build"
+    "build": "node ./scripts/build.js"
   },
   "keywords": [
     "use-upgrade",
