@@ -5,6 +5,12 @@ workspace:
   path: /home/node/app
 
 steps:
+  - name: npm-auth
+    image: robertstettner/drone-npm-auth
+    settings:
+      token:
+        from_secret: NPM_TOKEN
+
   - name: build-and-publish
     image: node:16
     volumes:
@@ -14,9 +20,6 @@ steps:
       - yarn global add pnpm
       - pnpm i
       - pnpm run publish
-    environment:
-      NPM_TOKEN:
-        from_secret: NPM_TOKEN
 
 volumes:
   - name: npmcache
