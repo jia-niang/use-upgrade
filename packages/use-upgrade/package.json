@@ -1,6 +1,6 @@
 {
   "name": "use-upgrade",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A lib can auto detect new versions of your SPA website.",
   "main": "lib/index.js",
   "module": "es/index.js",

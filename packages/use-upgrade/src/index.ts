@@ -120,7 +120,7 @@ interface IStorageData {
 
 /**
  * 检查新版本
- * @param isSendRequest 是否发请求 index.html
+ * @param isSendRequest 是否请求 index.html
  */
 export function triggerCheckUpgrade(isSendRequest?: boolean) {
   const fn = window[globalTriggerFnName]
