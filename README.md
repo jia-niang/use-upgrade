@@ -11,6 +11,6 @@
 
 ## `use-upgrade-webpack-plugin` [![npm](https://img.shields.io/npm/v/use-upgrade-webpack-plugin)](https://www.npmjs.com/package/use-upgrade-webpack-plugin)
 
-配合 `use-upgrade` 使用的 Webpack 插件，令开发者可以手动跳过某次版本更新。  
+配合 `use-upgrade` 使用的 Webpack 插件，令开发者可以手动跳过某次版本更新的提示。  
 
 [查看文档](./packages/use-upgrade-webpack-plugin/README.md)

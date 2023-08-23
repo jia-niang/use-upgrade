@@ -1,6 +1,6 @@
 # `use-upgrade-webpack-plugin`
 
-配合 `use-upgrade` 使用，令开发者可以手动跳过某次版本更新。
+配合 `use-upgrade` 使用，令开发者可以手动跳过某次版本更新的提示。
 
 # 安装
 
