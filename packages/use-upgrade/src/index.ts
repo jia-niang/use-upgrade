@@ -402,7 +402,7 @@ export function useUpgrade(callback?: () => void): boolean {
     return () => {
       window.removeEventListener(upgradeEventName, upgradeHandler)
     }
-  }, [])
+  }, [callback])
 
   return hasNewVersion
 }
