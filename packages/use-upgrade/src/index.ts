@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 
-declare var window: Window & {
+declare const window: Window & {
   __checkUpgrade_register__: boolean
-  __checkUpgrade_checkFn__: any
-  __checkUpgrade_cancelFn__: any
+  __checkUpgrade_checkFn__: typeof triggerCheckUpgrade
+  __checkUpgrade_cancelFn__: typeof cancelCheckUpgrade
 }
 
 interface ICheckUpgradeCommonOptions {
@@ -350,8 +350,9 @@ export function startCheckUpgrade(
     try {
       const rawPushStateFn = window.history.pushState
 
-      window.history.pushState = function pushState(state: any, title: any, url: any) {
-        rawPushStateFn.call(this, state, title, url)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      window.history.pushState = function pushState(state: any, unused: any, url: any) {
+        rawPushStateFn.call(this, state, unused, url)
         check()
       }
     } catch {}
