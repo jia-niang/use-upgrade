@@ -1,19 +1,17 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "ignorePatterns": [
-    "scripts/**",
-    "es/**",
-    "lib/**"
-  ],
-  "plugins": [
-    "@typescript-eslint",
-    "prettier"
-  ],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
+  ],
+  "plugins": [
+  ],
+  "ignorePatterns": [
+    "scripts/**",
+    "es/**",
+    "lib/**"
   ],
   "rules": {
     "@typescript-eslint/no-explicit-any": "off"

@@ -1,25 +1,21 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "ignorePatterns": [
-    "scripts/**",
-    "dist/**",
-    "es/**",
-    "lib/**"
-  ],
-  "plugins": [
-    "@typescript-eslint",
-    "prettier"
-  ],
   "extends": [
     "eslint:recommended",
     "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
   ],
+  "plugins": [
+  ],
+  "ignorePatterns": [
+    "scripts/**",
+    "dist/**",
+    "es/**",
+    "lib/**"
+  ],
   "rules": {
-    "@typescript-eslint/no-explicit-any": "off",
-    "no-empty": "off",
-    "no-var": "off"
+    "no-empty": "off"
   }
 }
