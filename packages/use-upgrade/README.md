@@ -14,7 +14,7 @@ yarn add use-upgrade
 
 此工具方法具备以下特点：
 
-- 兼容 `React`、`Vue`、`Umi`、`Taro` 等项目，如有需求还可以自行拓展；
+- 兼容 `React`、`Vue`、`Angular`、`Umi`、`Taro` 等项目，如有需求还可以自行拓展；
 - 通过请求 `index.html` 判断是否有新版本发布，无需其他任何额外配置；
 - 多个标签页打开时，只会同时发一个请求，而任一标签页收到更新可同步到其他标签页；
 - 请求由路由导航、定时器等事件自动触发，网页处在后台、网页离线时不会发请求，减少网络开销；
@@ -99,7 +99,7 @@ startCheckUpgrade({
 })
 
 // 或
-// 既提供回调函数，又提供配置对象
+// 既提供回调函数，又提供配置对象（顺序不能错）
 startCheckUpgrade(
   () => {
     Modal.info({ title: '系统已更新' })
@@ -138,7 +138,7 @@ export default function HomePage() {
 
 SPA 项目只要是使用 Webpack 打包，就一定会存在一个 “主 chunk” 并插入到 `index.html` 中，格式形如 `<script defer="defer" src="/static/js/main.b5dd354f.js"></script>`。
 
-注意这里的文件名 `main.b5dd354f.js`，其中 `main` 是 chunk 名，主 chunk 默认叫 `main`（React 项目）、`umi`（Umi 项目）、`app`（Vue 项目、Taro 项目），后面的 `b5dd354f` 为文件哈希，只要项目中任一文件发生变动，主 chunk 的哈希值一定会发生变化。
+注意这里的文件名 `main.b5dd354f.js`，其中 `main` 是 chunk 名，主 chunk 默认叫 `main`（React 项目、Angular 项目）、`umi`（Umi 项目）、`app`（Vue 项目、Taro 项目），后面的 `b5dd354f` 为文件哈希，只要项目中任一文件发生变动，主 chunk 的哈希值一定会发生变化。
 
 因此只要定期拉取最新的 `index.html`，使用正则表达式等方式取出最新主 chunk 的哈希，并与当前文件中主 chunk 的哈希进行比对即可判断站点是否有新版本发布。
 
