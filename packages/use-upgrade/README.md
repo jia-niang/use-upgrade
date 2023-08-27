@@ -20,7 +20,7 @@ yarn add use-upgrade
 - 请求由路由导航、定时器等事件自动触发，网页处在后台、网页离线时不会发请求，减少网络开销；
 - 采用异步设计，不会占用同步任务而影响性能，工具代码报错不会使项目受影响；
 - 配置项丰富，几乎所有行为都能定制；
-- 提供方法 `useUpgrade()`，既可以获知当前是否有新版本，也可以注册收到新版本时的副作用；
+- 对于 React 项目，提供 hook 方法 `useUpgrade()` 用于获取新版本状态和注册副作用；
 - 提供方法 `triggerCheckUpgrade()` 手动触发新版本检查；
 - 提供方法 `cancelCheckUpgrade()` 停止运行。
 
@@ -68,6 +68,31 @@ export function render(oldRender: Function) {
 }
 ```
 
+# React 应用
+
+提供一个 `useUpgrade()`，它接受一个函数作为检测到新版本后的回调，且返回一个布尔值表示是否有新版本。
+
+**注意，必须调用过 `startCheckUpgrade()`，此 hook 才能生效。**
+
+使用示例：
+
+```jsx
+import { useUpgrade } from 'use-upgrade'
+
+export default function HomePage() {
+  // 用法一： 注册一个发现新版本时会执行的副作用函数
+  useUpgrade(() => {
+    console.log('发现新版本')
+  })
+
+  // 用法二： 使用返回值，表示当前是否检测到存在新版本
+  const hasNewVersion = useUpgrade()
+
+  return <div>是否有新版本：{hasNewVersion ? '是' : '否'}</div>
+}
+```
+
+
 # 进阶使用
 
 `startCheckUpgrade()` 有多种重载：
@@ -111,30 +136,7 @@ startCheckUpgrade(
 )
 ```
 
-# React 应用
-
-提供一个 `useUpgrade()`，它接受一个函数作为检测到新版本后的回调，且返回一个布尔值表示是否有新版本。
-使用示例：
-
-```jsx
-import { useUpgrade } from 'use-upgrade'
-
-export default function HomePage() {
-  // 用法一： 注册一个发现新版本时会执行的副作用函数
-  useUpgrade(() => {
-    console.log('发现新版本')
-  })
-
-  // 用法二： 使用返回值，表示当前是否检测到存在新版本
-  const hasNewVersion = useUpgrade()
-
-  return <div>是否有新版本：{hasNewVersion ? '是' : '否'}</div>
-}
-```
-
-注意，必须调用过 `startCheckUpgrade()`，此 hook 才能生效。
-
-### 原理与解释
+# 原理与解释
 
 SPA 项目只要是使用 Webpack 打包，就一定会存在一个 “主 chunk” 并插入到 `index.html` 中，格式形如 `<script defer="defer" src="/static/js/main.b5dd354f.js"></script>`。
 
@@ -160,7 +162,9 @@ location / {
 
 ---
 
-# `startCheckUpgrade` 的 API
+# API 文档
+
+## `startCheckUpgrade`
 
 启动站点新版本检测。
 
@@ -184,7 +188,7 @@ location / {
 | overrideFetchHash          | 覆写拉取 index.html 并解析出主 chunk 的 hash 的方法                                                | `() => Promise<string>` | -                                   |
 | overrideLocalHash          | 覆写获取本地页面文件主 chunk 的 hash 的方法                                                        | `() => string`          | -                                   |
 
-## `useUpgrade` 的 API
+## `useUpgrade`
 
 用于 React 的 FC 组件的 hook 函数，既可以获知当前是否有新版本，也可以用于注册收到新版本时的副作用。
 
@@ -193,7 +197,7 @@ location / {
 - 返回 `boolean` 表示当前是否检测到了新版本；
 - 参数 `upgradeEffect` 是一个可选的回调函数，如果检测到新版本，会调用此回调。
 
-## `triggerCheckUpgrade` 的 API
+## `triggerCheckUpgrade`
 
 用于强制触发新版本的检测。
 
@@ -201,7 +205,7 @@ location / {
 
 - 参数 `isSendRequest` 是一个布尔值；此方法检查新版本默认是不会发请求拉取最新 `index.html` 的，将参数设为 `true` 时则会立即请求 `index.html` 来判断版本。
 
-## `cancelCheckUpgrade` 的 API
+## `cancelCheckUpgrade`
 
 用于停止站点新版本检测。
 
