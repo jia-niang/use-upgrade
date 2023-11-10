@@ -152,10 +152,14 @@ SPA 项目只要是使用 Webpack 打包，就一定会存在一个 “主 chunk
 
 ```
 location / {
-  root /...;
+  alias /path/to/your/website;
+  try_files $uri @my-website;
   index index.html;
+}
 
-  # 添加下面这一行
+location @my-website {
+  root /path/to/your/website;
+  try_files /index.html =404;
   add_header Cache-Control "private, no-cache, max-age=0";
 }
 ```
