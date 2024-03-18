@@ -21,8 +21,10 @@ yarn add use-upgrade
 - 采用异步设计，不会占用同步任务而影响性能，工具代码报错不会使项目受影响；
 - 配置项丰富，几乎所有行为都能定制；
 - 对于 React 项目，提供 hook 方法 `useUpgrade()` 用于获取新版本状态和注册副作用；
-- 提供方法 `triggerCheckUpgrade()` 手动触发新版本检查；
-- 提供方法 `cancelCheckUpgrade()` 停止运行。
+- 提供 API 以手动开启/停止功能。
+
+推荐配合 `use-upgrade-webpack-plugin` [![npm](https://img.shields.io/npm/v/use-upgrade-webpack-plugin)](https://www.npmjs.com/package/use-upgrade-webpack-plugin) 一同使用，它可以：
+- 让你可以通过命令行参数来控制这次版本发布是否接受或跳过 `use-upgrade` 的检测，这样微型版本发布时，可以不用打扰用户。
 
 # 使用示例
 
@@ -170,12 +172,12 @@ location @my-website {
 
 ## `startCheckUpgrade`
 
-启动站点新版本检测。
+启动站点新版本检测。建议在项目入口处就直接调用，开启功能。
 
 方法签名 `startCheckUpgrade(callback [, options])`：
 
 - 参数 `callback` 检测到网站有新版本时，会调用此回调。
-- 参数 `options` 可选的配置项，参见下方表格：
+- 参数 `options` 是可选的配置项，参见下方表格：
 
 | 属性                       | 说明                                                                                               | 类型                    | 默认值                              |
 | -------------------------- | -------------------------------------------------------------------------------------------------- | ----------------------- | ----------------------------------- |
@@ -194,7 +196,7 @@ location @my-website {
 
 ## `useUpgrade`
 
-用于 React 的 FC 组件的 hook 函数，既可以获知当前是否有新版本，也可以用于注册收到新版本时的副作用。
+用于 React 的 hook 函数，既可以获知当前是否有新版本，也可以用于注册收到新版本时的副作用。
 
 方法签名 `useUpgrade([upgradeEffect]): boolean`：
 
