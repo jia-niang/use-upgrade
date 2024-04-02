@@ -15,16 +15,16 @@ steps:
     image: node:16
     volumes:
       - name: npmcache
-        path: /usr/local/share/.cache/yarn
+        path: /root/.npm
     commands:
-      - yarn global add pnpm
+      - npm i -g pnpm
       - pnpm i
       - pnpm run publish
 
 volumes:
   - name: npmcache
     host:
-      path: /home/ubuntu/npmcache
+      path: /root/.npmcache
 
 trigger:
   branch:
